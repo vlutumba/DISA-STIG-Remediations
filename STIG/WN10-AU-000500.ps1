@@ -20,7 +20,6 @@
     PowerShell Ver. : 5.1 build 19041 Rev. 6216
 
 .USAGE
-    Put any usage instructions here.
     Example syntax:
     PS C:\> .\STIG-ID-WN10-AU-000500.ps1 
 #>
