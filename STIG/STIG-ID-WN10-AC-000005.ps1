@@ -29,7 +29,7 @@ $currentLockoutDuration = (cmd.exe /c 'net accounts' | Where-Object { $_ -match 
 $newLockoutDuration = 15   # Use 0 if you want "until an admin unlocks" (also compliant)
 
 
-# Set Lockout duration o 15 minutes
+# Set Lockout duration to 15 minutes
 if ($currentLockoutDuration -ne 0 -and $currentLockoutDuration -lt 15) { 
 
 cmd /c "net accounts /lockoutduration:$newLockoutDuration" | Out-Null
