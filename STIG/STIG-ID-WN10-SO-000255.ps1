@@ -38,7 +38,7 @@ If (-not (Test-Path $regPath)) {
     New-Item -Path $regPath -Force | Out-Null
 }
 
-# Set the RequireSecuritySignature value (0x00000000 = 0 in decimal)
+# Set the ConsentPromptBehaviorUser value (0x00000000 = 0 in decimal)
 Set-ItemProperty -Path $regPath -Name $valueName -Value $valueData -Type $valueType
 
 # Verify the value
