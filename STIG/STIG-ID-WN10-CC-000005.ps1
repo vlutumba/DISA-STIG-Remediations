@@ -35,7 +35,7 @@ If (-not (Test-Path $regPath)) {
     New-Item -Path $regPath -Force | Out-Null
 }
 
-# Set the RequireSecuritySignature value (0x00000001 = 1 in decimal)
+# Set the NoLockScreenCamera value (0x00000001 = 1 in decimal)
 Set-ItemProperty -Path $regPath -Name $valueName -Value $valueData -Type $valueType
 
 # Verify the value
