@@ -1,6 +1,7 @@
 <#
 .SYNOPSIS
-    This PowerShell script ensures that the Windows.
+    This PowerShell script applies multiple Windows 10 Security Technical Implementation Guide (STIG) settings 
+    by configuring several critical security controls.
 
 .NOTES
     Author          : Vilfride Lutumba
