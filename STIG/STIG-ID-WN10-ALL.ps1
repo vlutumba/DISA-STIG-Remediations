@@ -51,6 +51,7 @@ Get-ItemProperty -Path $regPath | Select-Object $valueName
 
 # STIG-ID: WN10-CC-000030
 # The system must be configured to prevent Internet Control Message Protocol (ICMP) redirects from overriding Open Shortest Path First (OSPF) generated routes.# Define the registry path and value
+# Define the registry path and value
 $regPath = "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters"
 $valueName = "EnableICMPRedirect"
 $valueData = 0  # (0x00000001 (0))
@@ -71,10 +72,12 @@ Get-ItemProperty -Path $regPath | Select-Object $valueName
 
 # STIG-ID: WN10-CC-000050
 # Hardened UNC paths must be defined to require mutual authentication and integrity for at least the \\*\SYSVOL and \\*\NETLOGON shares.
+# Define the registry path and value
 $regPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\HardenedPaths"
 $valueName1 = "\\*\NETLOGON" # RequireMutualAuthentication=1, RequireIntegrity=1
+$valueData1 = "RequireMutualAuthentication=1, RequireIntegrity=1" 
 $valueName2 = "\\*\SYSVOL" # RequireMutualAuthentication=1, RequireIntegrity=1
-$valueData = 1 
+$valueData2 = "RequireMutualAuthentication=1, RequireIntegrity=1" 
 $valueType = "String"
 
 # Make sure the path exists
@@ -83,8 +86,8 @@ If (-not (Test-Path $regPath)) {
 }
 
 # Set the values
-Set-ItemProperty -Path $regPath -Name $valueName1 -Value $valueData -Type $valueType
-Set-ItemProperty -Path $regPath -Name $valueName2 -Value $valueData -Type $valueType
+Set-ItemProperty -Path $regPath -Name $valueName1 -Value $valueData1 -Type $valueType
+Set-ItemProperty -Path $regPath -Name $valueName2 -Value $valueData2 -Type $valueType
 
 
 # Verify the value
@@ -94,6 +97,7 @@ Get-ItemProperty -Path $regPath | Select-Object $valueName1, $valueName2
 
 # STIG-ID: WN10-CC-000052
 # Windows 10 must be configured to prioritize ECC Curves with longer key lengths first.
+# Define the registry path and value
 $regPath = "HKLM:\SOFTWARE\Policies\Microsoft\Cryptography\Configuration\SSL\00010002"
 $valueName = "EccCurves"
 $valueData = "NistP384","NistP256"
@@ -155,6 +159,7 @@ Get-ItemProperty -Path $regPath | Select-Object $valueName
 
 
 # STIG-ID: WN10-CC-000335
+# The Windows Remote Management (WinRM) client must not allow unencrypted traffic.
 # Define the registry path and value
 $regPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\CredUI"
 $valueName = "EnumerateAdministrators"
