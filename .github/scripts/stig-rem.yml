@@ -1,0 +1,15 @@
+name: DISA-STIG-Remediation
+'on': push
+  workflow_dispatch:
+      inputs:
+        environment:
+          description: "Target env"
+          type: choice
+          options: [dev, staging, prod]
+          default: dev
+jobs:
+  my-job:
+    runs-on: self-hosted
+    steps:
+      - name: my-step
+        run: echo "Hello World!" 
